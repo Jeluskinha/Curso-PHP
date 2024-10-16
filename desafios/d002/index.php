@@ -8,7 +8,7 @@
 </head>
 <body>
     <main>
-       <!-- Aula 30/44 -->
+      <!-- Aula 30/44 -->
       <h1>Trabalhando com números aleatórios</h1>
       <?php 
         $min = 0;
