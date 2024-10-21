@@ -13,8 +13,20 @@
      <!-- Aula 31/44 -->
      <h1>Conversor de Moedas</h1>
      <?php
-         //Cotação copiada do Goole
-         $cotação = 5.17;
+         //Cotação vinda da API do Banco Central
+         $inicio = date("m-d-Y", strtotime("- 7 days"));
+         $fim = date("m-d-Y");
+
+         // URL que vem do banco central em formato JSON com o dado da cotação
+         $url = 'https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoDolarPeriodo(dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)?@dataInicial=\'' . $inicio . '\'&@dataFinalCotacao=\'' . $fim . '\'&$top=1&$orderby=dataHoraCotacao%20desc&$format=json&$select=cotacaoCompra,dataHoraCotacao';
+
+         // Tratando o JSON com json_decode(dados, true), mas antes pegando os dados da URL com file_get_contents(url)
+         $dados = json_decode(file_get_contents($url), true); // true => Array
+
+         // acessando o valor da cotação dentro do Array e mostrando na tela
+         $cotação = $dados['value'][0]['cotacaoCompra'];
+
+         //----------------------------------------------------------------//
 
          //Quanto $$ você tem?
          $real =  $_REQUEST['din'] ?: null;
