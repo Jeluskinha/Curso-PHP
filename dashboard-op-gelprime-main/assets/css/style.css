@@ -1,0 +1,18 @@
+.scrollable-tbody {
+    display: block;
+    max-height: 300px;
+    overflow-y: scroll;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer e Edge */
+}
+/* Para navegadores WebKit (Chrome, Safari) */
+.scrollable-tbody::-webkit-scrollbar {
+    display: none; /* Esconde a barra de rolagem */
+}
+
+thead, .scrollable-tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed; /* Garante que as colunas tenham largura fixa */
+    text-align: center;
+}
